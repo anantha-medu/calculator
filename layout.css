@@ -7,14 +7,12 @@
     flex-direction: column;
     margin: auto;
     margin-top: 60px;
-    border : 1px black solid;
 }
 
 .display
 {
     width: 440px;
     height: 160px;
-    border: 1px black solid;
     align-self: center;
     display: flex;
     flex-direction: column;
@@ -84,6 +82,7 @@
     height: 80px;
     align-items: center;
     justify-content: center;
+    display: flex;
 }
 
 p,  h2
