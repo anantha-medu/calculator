@@ -10,7 +10,7 @@
 {
 
     background-color: #eaebe7;
-    border: 1px #0f0d35 solid;
+    border: 1.8px #0f0d35 double;
     box-shadow: rgba(0, 0, 0, 0.35) 0px -50px 36px -28px inset;
     
 }
@@ -18,9 +18,9 @@
 h2
 {
     font-family: 'Orbitron', sans-serif;;
-    color: #317ac7;
+    color: #57370d;
     font-weight: bolder;
-    text-shadow: 1px 1px 6px #000000;
+    text-shadow: 1px 1px 1px #FAb464;
 }
 
 .keys, .reset
