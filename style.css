@@ -30,7 +30,7 @@
 .display
 {
 
-    background-color: #eaebe7;
+    background-color: #354f52;
     /* border: 1.8px #0f0d35 double; */
     box-shadow: rgba(0, 0, 0, 0.35) 0px -50px 36px -28px inset;
     border-radius: 10px;
@@ -87,7 +87,8 @@ h2
 {
     font-size: 55px;
     margin-bottom: 25px;
-    color: #264248;
+    color: #cad2c5;
+    
 }
 
 #show-typed
