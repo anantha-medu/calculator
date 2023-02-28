@@ -3,6 +3,7 @@
 const numberButtons = Array.from(document.querySelectorAll('.number'));
 const clearButton = document.getElementById("clear");
 const operationButtons = Array.from(document.querySelectorAll('.operation'));
+const equalsButton = document.getElementById('equals');
 
 // to display the numbers on click
 numberButtons.forEach(choice => choice.addEventListener("click", displayNumberOnClick));
@@ -36,14 +37,17 @@ upperDisplay.textContent = "";
 
 // to display upperstring when any operation keys pressed
 
-operationButtons.forEach(choice => choice.addEventListener("click", displayAfterOperationbtnClick))
+operationButtons.forEach(choice => choice.addEventListener("click", displayAfterOperationbtnClick));
+
+let operator;
 
 function displayAfterOperationbtnClick(e)
 {
-    const operator = e.currentTarget.getAttribute("data-value");
+    // const operator = e.currentTarget.getAttribute("data-value");
     
     if(upperDisplay.textContent === "")
     {
+        operator = e.currentTarget.getAttribute("data-value");
         firstNumber = parseInt(typedDisplay.textContent);
         upperDisplay.textContent = firstNumber + " " + operator
         typingText = "0";
@@ -54,9 +58,23 @@ function displayAfterOperationbtnClick(e)
         secondNumber = parseInt(typedDisplay.textContent);
         solution = evaluate(firstNumber, secondNumber, operator);
         firstNumber = solution;
+        operator = e.currentTarget.getAttribute("data-value");
         upperDisplay.textContent = firstNumber + " " + operator;
         typingText = "0";
     }
+    typedDisplay.textContent = typingText;
+}
+
+// to get the final answer after clicking on equals
+
+equalsButton.addEventListener("click", finalEvaluation);
+
+function finalEvaluation(e)
+{
+    secondNumber = parseInt(typedDisplay.textContent);
+    upperDisplay.textContent = firstNumber + " " + operator + " " + secondNumber
+    solution = evaluate(firstNumber, secondNumber, operator);
+    typedDisplay.textContent = solution;
 }
 
 
