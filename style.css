@@ -74,6 +74,12 @@ h2
     background-color: #b7b7a4;
 }
 
+.operation, .dot, .equals
+{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bolder;
+}
+
 
 
 .display1
@@ -95,4 +101,9 @@ h2
 {
     font-size: 30px;
     color: #0f0d35;
+}
+
+#show-typing.finalAnswer
+{
+    color: #52b69a;
 }
