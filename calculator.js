@@ -157,7 +157,15 @@ function evaluate(first, second, operator)
     }
     // tempSolution = Math.round(tempSolution*10000)/10000;
     // tempSolution = tempSolution.toFixed(4).replace(/\.?0+$/,"");
-    tempSolution = tempSolution.toPrecision(1+4).replace(/\.?0+$/,"");
+    if(tempSolution > 99999999999999)
+    {
+        tempSolution = Number.parseFloat(tempSolution).toExponential(4);
+    }
+    
+    if(typeof(tempSolution) === "number")
+    {
+        tempSolution = tempSolution.toFixed(4).replace(/\.?0+$/,"");
+    }
     return tempSolution;
 }
 
