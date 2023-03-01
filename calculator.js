@@ -164,7 +164,15 @@ function evaluate(first, second, operator)
     
     if(typeof(tempSolution) === "number")
     {
-        tempSolution = tempSolution.toFixed(4).replace(/\.?0+$/,"");
+        if(tempSolution >= 100000000000)
+        {
+            tempSolution = tempSolution.toFixed(2).replace(/\.?0+$/,"");
+        }
+        else
+        {
+            tempSolution = tempSolution.toFixed(4).replace(/\.?0+$/,"");
+        }
+        
     }
     return tempSolution;
 }
