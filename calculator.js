@@ -79,8 +79,9 @@ function displayAfterOperationbtnClick(e)
 {
     // const operator = e.currentTarget.getAttribute("data-value");
     
-    if(upperDisplay.textContent === "")
+    if(upperDisplay.textContent === "" || upperDisplay.textContent.includes("=")) // this is if the user has just input the first number or if he will use the answer from previous equation as first number"
     {
+        typedDisplay.classList.remove('finalAnswer');
         operator = e.currentTarget.getAttribute("data-value");
         firstNumber = parseFloat(typedDisplay.textContent);
         upperDisplay.textContent = firstNumber + " " + operator
