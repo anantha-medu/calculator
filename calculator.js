@@ -33,7 +33,23 @@ function displayNumberOnClick(e)
     }
     else
     {
-        typingText = typingText + num;
+        if(num === ".")
+        {
+            if(typedDisplay.textContent.includes("."))
+            {
+                return
+            }
+
+            else
+            {
+                typingText = typingText + num;
+            }
+        }
+        
+        else
+        {
+            typingText = typingText + num;
+        }
     }
 
     typedDisplay.textContent = typingText;
@@ -57,14 +73,15 @@ function displayAfterOperationbtnClick(e)
     if(upperDisplay.textContent === "")
     {
         operator = e.currentTarget.getAttribute("data-value");
-        firstNumber = parseInt(typedDisplay.textContent);
+        firstNumber = parseFloat(typedDisplay.textContent);
         upperDisplay.textContent = firstNumber + " " + operator
         typingText = "0";
     }
-
+    
+    // here the numbers will also be evaluated
     else
     {
-        secondNumber = parseInt(typedDisplay.textContent);
+        secondNumber = parseFloat(typedDisplay.textContent);
         solution = evaluate(firstNumber, secondNumber, operator);
         if(isNaN(solution))
         {
@@ -78,13 +95,32 @@ function displayAfterOperationbtnClick(e)
     typedDisplay.textContent = typingText;
 }
 
+// adding decimal points
+
+// decimalButton.addEventListener("click", addDecimalPoint)
+
+// function addDecimalPoint(e)
+// {
+//     let dot = e.currentTarget.getAttribute("data-number");
+//     if(typedDisplay.textContent.contains(dot))
+//     {
+//         return;
+//     }
+
+//     else
+//     {
+//         typingText = typingText + dot;
+//         typedDisplay.textContent = typingText;
+//     }
+// }
+
 // to get the final answer after clicking on equals
 
 equalsButton.addEventListener("click", finalEvaluation);
 
 function finalEvaluation(e)
 {
-    secondNumber = parseInt(typedDisplay.textContent);
+    secondNumber = parseFloat(typedDisplay.textContent);
     solution = evaluate(firstNumber, secondNumber, operator);
     console.log(solution);
     if(isNaN(solution))
@@ -147,9 +183,8 @@ function deleteDigit(e)
     }
     else if(typedDisplay.textContent.length === 1)
     {
-        // typedDisplay.textContent = typingText.slice(0, typingText.length-1);
         typingText = "0";
-        typedDisplay.textContent = "0"; 
+        typedDisplay.textContent = typingText; 
     }
     else
     {
