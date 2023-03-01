@@ -20,10 +20,20 @@ typedDisplay.textContent = typingText;
 function displayNumberOnClick(e)
 {
     
+    if(typedDisplay.textContent.length >= 14)
+    {
+        return;
+    }
+    
     let num = e.currentTarget.getAttribute("data-number");
     if(typingText === "0")
     {
-        typingText = num;
+        if(num===".")
+        {typingText = typingText + num}
+        else
+        {
+            typingText = num;
+        }
     }
     else if(typedDisplay.classList.contains('finalAnswer'))
     {
@@ -165,7 +175,8 @@ function evaluate(first, second, operator)
                 break
             }
     }
-
+    tempSolution = Math.round(tempSolution*10000)/10000;
+    tempSolution = tempSolution.toFixed(4).replace(/\.?0+$/,"");
     return tempSolution;
 }
 
@@ -188,7 +199,8 @@ function deleteDigit(e)
     }
     else
     {
-        typedDisplay.textContent = typingText.slice(0, typingText.length-1);
+        typingText = typingText.slice(0, typingText.length-1);
+        typedDisplay.textContent = typingText;
     }
 }
 
