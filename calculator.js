@@ -5,7 +5,6 @@ const clearButton = document.getElementById("clear");
 const deleteButton = document.getElementById("delete");
 const operationButtons = Array.from(document.querySelectorAll('.operation'));
 const equalsButton = document.getElementById('equals');
-const decimalButton = document.querySelector('.dot');
 
 // to display the numbers on click
 numberButtons.forEach(choice => choice.addEventListener("click", displayNumberOnClick));
@@ -105,25 +104,6 @@ function displayAfterOperationbtnClick(e)
     typedDisplay.textContent = typingText;
 }
 
-// adding decimal points
-
-// decimalButton.addEventListener("click", addDecimalPoint)
-
-// function addDecimalPoint(e)
-// {
-//     let dot = e.currentTarget.getAttribute("data-number");
-//     if(typedDisplay.textContent.contains(dot))
-//     {
-//         return;
-//     }
-
-//     else
-//     {
-//         typingText = typingText + dot;
-//         typedDisplay.textContent = typingText;
-//     }
-// }
-
 // to get the final answer after clicking on equals
 
 equalsButton.addEventListener("click", finalEvaluation);
@@ -175,8 +155,9 @@ function evaluate(first, second, operator)
                 break
             }
     }
-    tempSolution = Math.round(tempSolution*10000)/10000;
-    tempSolution = tempSolution.toFixed(4).replace(/\.?0+$/,"");
+    // tempSolution = Math.round(tempSolution*10000)/10000;
+    // tempSolution = tempSolution.toFixed(4).replace(/\.?0+$/,"");
+    tempSolution = tempSolution.toPrecision(1+4).replace(/\.?0+$/,"");
     return tempSolution;
 }
 
