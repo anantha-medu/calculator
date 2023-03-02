@@ -69,12 +69,12 @@ h2
     
 }
 
-.operation
+.operation, #equals
 {
     background-color: #b7b7a4;
 }
 
-.operation, .dot, .equals
+.operation, .dot, #equals
 {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: bolder;
