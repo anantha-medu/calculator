@@ -213,3 +213,33 @@ function clearAllTyped(e)
     upperDisplay.textContent = "";
 
 }
+
+
+// keyboard support
+
+document.addEventListener("keydown", activateKeyboardSupport)
+
+function activateKeyboardSupport(e)
+{
+    const keyPressed = e.key;
+    console.log(e.key);
+    
+    if(isFinite(keyPressed) || e.key === ".") 
+    {
+        document.querySelector(`[data-number= "${keyPressed}"]`).click();
+    }
+
+    else
+    {
+        if(document.querySelector(`[data-value= "${keyPressed}"]`) != null)
+        {
+            document.querySelector(`[data-value= "${keyPressed}"]`).click();
+        }
+
+        else if(keyPressed === "Enter")
+        {
+            document.querySelector('[data-value="="]').click();
+        }
+
+    }
+}
