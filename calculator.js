@@ -185,6 +185,7 @@ deleteButton.addEventListener("click", deleteDigit)
 
 function deleteDigit(e)
 {
+    typedDisplay.classList.remove('finalAnswer');
     typingText = typedDisplay.textContent
     if(typedDisplay.textContent === "" || typedDisplay.textContent === "0")
     {
@@ -208,6 +209,7 @@ clearButton.addEventListener("click", clearAllTyped)
 
 function clearAllTyped(e)
 {
+    typedDisplay.classList.remove('finalAnswer');
     typedDisplay.textContent = "0";
     typingText = "";
     upperDisplay.textContent = "";
@@ -239,6 +241,16 @@ function activateKeyboardSupport(e)
         else if(keyPressed === "Enter")
         {
             document.querySelector('[data-value="="]').click();
+        }
+
+        else if (keyPressed === "Backspace")
+        {
+            document.querySelector('#delete').click();
+        }
+
+        else if(keyPressed === "Delete")
+        {
+            document.querySelector('#clear').click();
         }
 
     }
