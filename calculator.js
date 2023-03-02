@@ -15,10 +15,14 @@ let firstNumber, secondNumber
 let typingText = "0";
 typedDisplay.textContent = typingText;
 
+let operatorClicked, equalsClicked; //this is to check if an operator is already clicked and it's usage is to avoid the bug after clicking on operator button more than once
+
+
 // to  display the number when clicked on button
 function displayNumberOnClick(e)
 {
-    
+    operatorClicked = false;
+    equalsClicked = false;
     if(typedDisplay.textContent.length >= 14)
     {
         return;
@@ -77,7 +81,14 @@ let operator;
 
 function displayAfterOperationbtnClick(e)
 {
-    // const operator = e.currentTarget.getAttribute("data-value");
+    
+    equalsClicked = false;
+    if(operatorClicked)
+    {
+        operator = e.currentTarget.getAttribute("data-value");
+        upperDisplay.textContent = firstNumber + " " + operator;
+        return;
+    }
     
     if(upperDisplay.textContent === "" || upperDisplay.textContent.includes("=")) // this is if the user has just input the first number or if he will use the answer from previous equation as first number"
     {
@@ -86,13 +97,14 @@ function displayAfterOperationbtnClick(e)
         firstNumber = parseFloat(typedDisplay.textContent);
         upperDisplay.textContent = firstNumber + " " + operator
         typingText = "0";
+        operatorClicked = true;
     }
     
     // here the numbers will also be evaluated
     else
     {
         secondNumber = parseFloat(typedDisplay.textContent);
-        solution = evaluate(firstNumber, secondNumber, operator);
+        solution = evaluate(parseFloat(firstNumber), secondNumber, operator);
         if(isNaN(solution))
         {
             return
@@ -101,6 +113,7 @@ function displayAfterOperationbtnClick(e)
         operator = e.currentTarget.getAttribute("data-value");
         upperDisplay.textContent = firstNumber + " " + operator;
         typingText = "0";
+        operatorClicked = true;
     }
     typedDisplay.textContent = typingText;
 }
@@ -111,6 +124,12 @@ equalsButton.addEventListener("click", finalEvaluation);
 
 function finalEvaluation(e)
 {
+    if(equalsClicked)
+    {
+        return;
+    }
+    
+    equalsClicked = true;
     secondNumber = parseFloat(typedDisplay.textContent);
     solution = evaluate(firstNumber, secondNumber, operator);
     console.log(solution);
