@@ -132,7 +132,6 @@ function finalEvaluation(e)
     equalsClicked = true;
     secondNumber = parseFloat(typedDisplay.textContent);
     solution = evaluate(firstNumber, secondNumber, operator);
-    console.log(solution);
     if(isNaN(solution))
         {
             return
@@ -243,7 +242,6 @@ document.addEventListener("keydown", activateKeyboardSupport)
 function activateKeyboardSupport(e)
 {
     const keyPressed = e.key;
-    console.log(e.key);
     
     if(isFinite(keyPressed) || e.key === ".") 
     {
